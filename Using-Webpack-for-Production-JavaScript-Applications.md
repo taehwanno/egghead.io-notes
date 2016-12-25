@@ -5,11 +5,11 @@
 - [x] 3. Tree shaking with Webpack 2
 - [x] 4. Polyfill Promises for Webpack 2
 - [x] 5. Maintain sane file sizes with webpack code splitting
-- [ ] 6. Hashing with Webpack for long term caching
-- [ ] 7. Grouping vendor files with the Webpack CommonsChunkPlugin
-- [ ] 8. Optimize React size and performance with Webpack production plugins
-- [ ] 9. Chunking common modules from multiple apps with the Webpack CommonsChunkPlugin
-- [ ] 10. Import a non-ES6 module with Webpack
+- [x] 6. Hashing with Webpack for long term caching
+- [x] 7. Grouping vendor files with the Webpack CommonsChunkPlugin
+- [x] 8. Optimize React size and performance with Webpack production plugins
+- [x] 9. Chunking common modules from multiple apps with the Webpack CommonsChunkPlugin
+- [x] 10. Import a non-ES6 module with Webpack
 - [ ] 11. Expose modules to dependencies with Webpack
 - [ ] 12. Initialize a Webpack Project with Karma for Testing
 - [ ] 13. Use Chai assertions for tests in a Karma project
@@ -66,9 +66,85 @@ code splitting을 사용하려면 `Promise`가 사용자 브라우저에서 지�
 스크립트 파일이 로드될 때 long-term 캐싱 전략을 활용하는 방법에 대한 기초 설명 강좌. 핵심은 webpack의 `chunkhash`를 활용하여 URL을 통해 캐싱을 하며 내용이 바뀔 경우 해당 해쉬값을 바꿔 다시 받게 한다.
 
 ## 7. Grouping vendor files with the Webpack CommonsChunkPlugin
+
+> Often, you have dependencies which you rarely change. In these cases, you can leverage the CommonsChunkPlugin to automatically put these modules in a separate bundled file so they can be cached and loaded separately from the rest of your code (leveraging the browser cache much more effectively).
+
+자주 변화하는 비지니스 로직이 아닌 라이브러리 벤더 코드는 webpack built-in 플러그인 `CommonsChunkPlugin`을 활용해서 따로 앱으로부터 분리할 수 있다. 이 때 multiple entry를 가지게 되며 각각의 entry는 고유한 output file을 가져야하며 다수의 entry에서 output file이 겹칠 경우 에러가 발생하게 된다.
+
+```
+plugins: [
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor',
+  })
+]
+```
+
+테스트 환경에서는 따로 분리할 필요가 없으므로 `process.env.NODE_ENV`를 활용해서 `plugins` 배열 추가 유무를 결정하자
+
 ## 8. Optimize React size and performance with Webpack production plugins
+
+> You can fine tune several webpack plugins to make your bundle as small as it can be for your specific application. However there are a few things you can do for pretty much every application to make it smaller and run faster. In this lesson we’ll combine several webpack plugins to optimize things for a React application (this is also applicable for non-React applications as well). 
+
+> This will be "New Webpack.loader options plugin." This one is actually included by default with that -p argument, but it only specifies minimize is true. It will also specify debug is false just to speed up our build times.
+
+> The loader options plug-in essentially tells all of our loaders that we're in minimized mode, and they can optimize according to whatever optimizations they can do, or the code that they're loading. I should also note that the loader options plug-in is only available in Webpack 2.
+
+```
+new webpack.LoaderOptionsPlugin({ 
+  minimize: true,
+  debug: false,
+})
+```
+
+> What this is doing is it's taking any instance of process.env.nodeenv and replacing it with a string production. That way when React or even in our own code, we say process.env.nodeenv is production. It's going to replace this with production.
+
+> It's going to evaluate this as true. In any instance where that value actually ends up being false in an if statement, for example, it can go ahead and remove that code as dead code. That's generally done by the UglifyJS plug-in which we'll add next.
+
+> This saves us a ton of space when using React in particular, but it can also save us some space with other libraries as well. I should note also that this isn't just a size optimization, but it's also a performance optimization in the case of React. For example, it will disable runtime checks for your prop types.
+
+```
+new webpack.DefinePlugin({
+  'process.env': {
+    NODE_ENV: '"production"',
+  },
+})
+```
+
 ## 9. Chunking common modules from multiple apps with the Webpack CommonsChunkPlugin
+
+> If you have a multi-page application (as opposed to a single page app), you’re likely sharing modules between these pages. By chunking these common modules into a single common bundle, you can leverage the browser cache much more powerfully. In this lesson we’ll use webpack’s CommonsChunkPlugin to easily share common modules between apps.
+
+> You'll likely be required to explicitly list the entries to use in the CommonsChunk, though. You can do this by adding a chunks property with an array of the entry names to have this plugin apply to.
+
 ## 10. Import a non-ES6 module with Webpack
+
+> When you have a dependency that does not export itself properly, you can use the exports-loader to force it to export the pieces of the file that you need.
+
+```js
+import leftPad from 'exports?leftPad!./non_node_modules/left-pad';
+```
+
+ES6 module을 통해 `export`되지 않은 파일은 `exports-loader`를 이용해서 처리가능하다.
+
+```js
+import leftPad from 'imports?window=>{}!exports?leftPad!./non_node_modules/left-pad';
+```
+
+window 전역객체를 오염시키고 있는 모듈의 경우 `imports-loader`를 통해 처리가능하다.
+
+```
+module: {
+  loaders: [
+    {
+      test: require.resolve('./src/js/non_node_modules/left-pad'),
+      loader: ['imports?window=>{}', 'exports?leftPad']
+    }
+  ]
+}
+```
+
+해당 파일 (`leftPad`)를 `import` 할 때 마다 loader의 쿼리 스트링을 작성하기엔 번거로우므로 `module`의 `loader`에서 `require.resolve`를 활용해서 처리한다.
+
 ## 11. Expose modules to dependencies with Webpack
 ## 12. Initialize a Webpack Project with Karma for Testing
 ## 13. Use Chai assertions for tests in a Karma project
