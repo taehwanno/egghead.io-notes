@@ -1,4 +1,4 @@
-# Using Webpack for Production JavaScript Applications
+# [Using Webpack for Production JavaScript Applications](https://egghead.io/courses/using-webpack-for-production-javascript-applications)
 
 - [x] 1. Intro to the Production Webpack Course
 - [x] 2. Validate your Webpack config with webpack-validator

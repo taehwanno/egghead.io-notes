@@ -1,4 +1,4 @@
-# Building React Applications with Idiomatic Redux
+# [Building React Applications with Idiomatic Redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
 
 ```js
 import { connect } from 'react-redux';
