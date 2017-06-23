@@ -10,3 +10,4 @@
 - [Getting Started with React Router, Joe Maddalone](Getting-Started-with-React-Router.md)
 - [Jest-with-@kentcdodds](Jest-with-@kentcdodds.md)
 - [React-Storybook-with-@arunoda](React-Storybook-with-@arunoda.md)
+- [Learn the Best and Most Useful SCSS, Ari Picker](Learn-the-Best-and-Most-Useful-SCSS.md)
