@@ -6,13 +6,13 @@
 - [x] 4. Create stateful React Components using TypeScript
 - [x] 5. Publish a React component with TypeScript
 
-# [1. Why use TypeScript with React](https://egghead.io/lessons/egghead-why-use-typescript-with-react)
+## [1. Why use TypeScript with React](https://egghead.io/lessons/egghead-why-use-typescript-with-react)
 
 > You get excellent developer experience when using TypeScript with React. This is better when compared to many other frameworks that work off of simple template strings because JSX is embedded within TypeScript.
 
 > In this lesson we give a demonstration of the some of the powerful refactorings and type checks enabled by using TypeScript with React.
 
-## Pros
+### Pros
 
 - Autocomplete
 - Type Checking
@@ -20,7 +20,7 @@
   - Rename component name, props
 - Understanding Code
 
-# [2. Bootstrap a TypeScript + React project](https://egghead.io/lessons/egghead-bootstrap-a-typescript-react-project)
+## [2. Bootstrap a TypeScript + React project](https://egghead.io/lessons/egghead-bootstrap-a-typescript-react-project)
 
 > Learn how to setup a TypeScript + React project from scratch. Understand the reason behind every line involved in the configuration allowing you to customize it at will in the future.
 
@@ -72,7 +72,7 @@ module.exports = {
 }
 ```
 
-# [3. Create stateless React components using TypeScript](https://egghead.io/lessons/react-create-stateless-react-components-using-typescript)
+## [3. Create stateless React components using TypeScript](https://egghead.io/lessons/react-create-stateless-react-components-using-typescript)
 
 > You can create a stateless React component in TypeScript as easily as creating a function.
 
@@ -91,7 +91,7 @@ ReactDOM.render(
 );
 ```
 
-# [4. Create stateful React Components using TypeScript](https://egghead.io/lessons/egghead-create-stateful-react-components-using-typescript)
+## [4. Create stateful React Components using TypeScript](https://egghead.io/lessons/egghead-create-stateful-react-components-using-typescript)
 
 > You can create stateful React Components in TypeScript by extending from the React.Component class. This parent class takes two generic parameters, Props and State.
 
@@ -130,7 +130,7 @@ class App extends React.Component<AppProps, AppState> {
 }
 ```
 
-# [5. Publish a React component with TypeScript](https://egghead.io/lessons/egghead-publish-a-react-component-with-typescript)
+## [5. Publish a React component with TypeScript](https://egghead.io/lessons/egghead-publish-a-react-component-with-typescript)
 
 > In this lesson we look at how to create a React Component package using TypeScript.
 
