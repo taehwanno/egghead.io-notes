@@ -13,3 +13,4 @@
 - [Learn the Best and Most Useful SCSS, Ari Picker](Learn-the-Best-and-Most-Useful-SCSS.md)
 - [Use TypeScript to develop React Applications, Basarat Ali Syed](Use-TypeScript-to-develop-React-Applications.md)
 - [Advanced React Component Patterns, Kent C. Dodds](./Advanced-React-Component-Patterns.md)
+- [Learn how to use Immutable.js, J.S. Leonard](learn-how-to-use-immutable-js.md)
