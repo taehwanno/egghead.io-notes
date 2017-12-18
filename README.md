@@ -11,3 +11,4 @@
 - [Jest-with-@kentcdodds](Jest-with-@kentcdodds.md)
 - [React-Storybook-with-@arunoda](React-Storybook-with-@arunoda.md)
 - [Learn the Best and Most Useful SCSS, Ari Picker](Learn-the-Best-and-Most-Useful-SCSS.md)
+- [Use TypeScript to develop React Applications, Basarat Ali Syed](Use-TypeScript-to-develop-React-Applications.md)
