@@ -1,6 +1,6 @@
 # egghead.io-notes
 
-[egghead.io](https://egghead.io/) lecture notes for 2016 gift membership (2016. 12. 19 ~ 2017. 12. 18)
+> [egghead.io](https://egghead.io/) lecture notes
 
 # Done
 
