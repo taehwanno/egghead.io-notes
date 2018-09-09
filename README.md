@@ -16,3 +16,4 @@
 - [Learn how to use Immutable.js, J.S. Leonard](learn-how-to-use-immutable-js.md)
 - [End to End testing with Cypress, Andrew Van Slaars](./End-to-End-testing-with-Cypress.md)
 - [Manage Complex State in React Apps with MobX, Michel Weststrate](./Manage-Complex-State-in-React-Apps-with-MobX.md)
+- [Learn Advanced CSS Layout Techniques](./Learn-Advanced-CSS-Layout-Techniques.md)
